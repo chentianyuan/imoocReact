@@ -1,4 +1,6 @@
 import React from 'react'
+// 按需加载antd组件,需要babel插件和webpack的配置,详情见官网
+import { Button,List } from 'antd-mobile'
 
 class App extends React.Component{
   render(){
@@ -44,12 +46,17 @@ class Other extends React.Component{
     return (
       <div>
         <h1>一营营长，{this.props.boss}</h1>
-        <button onClick={()=>this.addSolders()}>新兵入伍</button>
-        <ul>
-          {this.state.solders.map((value,index)=>{
-            return <li key={index}>{value}</li>
-          })}
-        </ul>
+        <Button type="primary" onClick={()=>this.addSolders()}>新兵入伍</Button>
+        <List>
+          renderHeader={()=>'士兵列表'}
+          {this.state.solders.map(v=>{
+            return (
+              <List.Item key={v}>
+                {v}
+              </List.Item>
+            )
+          })}  
+        </List>
       </div>
     )
   }
