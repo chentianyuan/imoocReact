@@ -10,7 +10,6 @@ const mapStatetoProps = (state) => {
     // 要state什么属性放到props里
     return { state:state }
 }
-  
     // 要什么方法放到props里，自动dispatch
 const actionCreators = { login,logout }
 
