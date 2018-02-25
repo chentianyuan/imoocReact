@@ -7,6 +7,7 @@ class AuthRoute extends React.Component{
         const pubilcList = ['/login','register']
         const pathname = this.props.location.pathname
         if(pubilcList.indexOf(pathname)>-1){
+            console.log(123213)
            return 
         }
         // 获取用户信息
@@ -17,6 +18,7 @@ class AuthRoute extends React.Component{
                     // 已登录
                 }else{
                     // react-router4中，通过withRouter装饰组件，通过this.props.history.push控制路由
+                    // 否则纯组件的组件无法通过this.props.history去获取路由信息
                     this.props.history.push('login')                 
                 }
             }

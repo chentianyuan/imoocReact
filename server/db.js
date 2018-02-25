@@ -11,13 +11,28 @@ db.once('open', function () {
 })
 
 //获取文档，传入特定的Schema方案
-const User = mongoose.model('user',new mongoose.Schema({
-    user:{type:String,require:true},
-    age:{type:Number,require:true}
-}))
-
-var Models = {
-    
+const models = {
+    user:{
+        'user':{type:String,require:true},
+        'pwd':{type:String,require:true},
+        'avatar':{type:String},
+        'desc':{type:String},
+        // 职位
+        'title':{type:String},
+        // boss额外字段
+        'company':{type:String},
+        'money':{type:String}
+    }
 }
 
-module.exports = User
+// const User = mongoose.model('user',new mongoose.Schema({}))
+
+for(let m in models){
+    mongoose.model(m,new mongoose.Schema(models[m]))
+}
+
+module.exports = {
+    getModel:(name)=>{
+        return mongoose.model(name)
+    }
+}
