@@ -10,9 +10,10 @@ import thunk from 'redux-thunk'
 import { BrowserRouter, Route, Link, Redirect, Switch } from 'react-router-dom'
 
 
-import Login from './container/login/login.js'
-import Register  from './container/register/register.js'
-import AuthRouter  from './component/authroute/authroute.js'
+import Login from './container/login/login'
+import Register  from './container/register/register'
+import BossInfo from './container/bossinfo/bossinfo'
+import AuthRouter  from './component/authroute/authroute'
 // 组合后的reducer仅在入口处引用一次即可
 import reducers from './reducer.js'
 import './conf.js'
@@ -38,9 +39,12 @@ ReactDOM.render(
     (<Provider store={store}>
         <BrowserRouter>
             <div>
-                <Route path='/login' component={ Login }></Route>
-                <Route path='/Register' component={ Register }></Route>
-                <Route path="/boss" component={ Boss }></Route>
+                <Switch>
+                    <Route path='/bossinfo' component={BossInfo}></Route>
+                    <Route path='/login' component={ Login }></Route>
+                    <Route path='/Register' component={ Register }></Route>
+                    <Route path="/boss" component={ Boss }></Route>
+                </Switch>
                 <AuthRouter></AuthRouter>
             </div>
         </BrowserRouter>
